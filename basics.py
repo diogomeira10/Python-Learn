@@ -25,6 +25,6 @@
 # print(test + 10)
 
 #input
-user_input = input('Please write something')
+user_input = input('Please write something: ')
 print(user_input)
 print(2)
