@@ -6,3 +6,12 @@
 
 # Some modules we can import are from the Python Standard Library
 
+# Searching for the right module in need is going to be something usual
+
+
+import math
+import random
+import string
+
+print(round(math.sqrt(4)))
+print(random.random())
