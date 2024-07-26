@@ -1,8 +1,6 @@
 import random
 
 options = ['rock','paper','scissors']
-bot_wins = 0
-user_wins = 0
 wins = 0
 losses = 0
 rounds = 0
