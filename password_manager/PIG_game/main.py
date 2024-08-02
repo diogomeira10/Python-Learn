@@ -15,42 +15,73 @@ The first player to reach or exceed 100 points wins the game.'''
 import random
 
 def roll_dice():
-    random_number = random.randint(1, 6) 
-    return random_number
+    return random.randint(1, 6)
 
 player1_score = 0
 player2_score = 0
-round = 1
+turn = 1
 
 while True:
-    if round % 2 == 1:
+    if player1_score >= 100:
+        print(f'Congratulations Player 1, you won with {player1_score} points!')
+        break
+    elif player2_score >= 100:
+        print(f'Congratulations Player 2, you won with {player2_score} points!')
+        break
+
+    if turn % 2 == 1:
+        turn_score = 0
+        print("Player 1's turn")
         while True:
-            choice = input('Player 1, is your time to play.Do you want to roll/pass?')
+            choice = input('Player 1, it is your turn. Do you want to roll/pass? ').strip().lower()
+            options = ['roll', 'pass']
+
+            if choice not in options:
+                print('Please select a valid option: roll/pass')
+                continue
+
             if choice == 'roll':
                 number = roll_dice()
-                player1_score += number
-                if(number == 1):
-                    print('Bad Luck, 1 was rolled. You lost all your score.')
-                    round += 1
+                print(f'You rolled a {number}')
+                if number == 1:
+                    print('Bad Luck, 1 was rolled. You lost all your turn score.')
+                    turn += 1
                     break
                 else:
-                    print(f'You rolled {number}, your total score is {player1_score}') 
-                    continue
-            if choice == 'pass':
-               round += 1
-            break
-    
-    if round % 2 == 0:
+                    turn_score += number
+                    print(f'Your turn score is {turn_score}. If you pass, your total score will be {player1_score + turn_score}')
+            elif choice == 'pass':
+                player1_score += turn_score
+                print(f'You end your turn with {player1_score} points.')
+                turn += 1
+                break
+
+
+    else:
+        turn_score = 0
+        print("Player 2's turn")
         while True:
-            choice = input('Player 2, is your time to play.Do you want to roll/pass?')
+            choice = input('Player 2, it is your turn. Do you want to roll/pass? ').strip().lower()
+            options = ['roll', 'pass']
+
+            if choice not in options:
+                print('Please select a valid option: roll/pass')
+                continue
+
             if choice == 'roll':
                 number = roll_dice()
-                player1_score += number
-                print(f'You rolled {number}, your total score is {player1_score}') 
-                continue
-            if choice == 'pass':
-               round += 1
-            break
-        continue
-    break
+                print(f'You rolled a {number}')
+                if number == 1:
+                    print('Bad Luck, 1 was rolled. You lost all your turn score.')
+                    turn += 1
+                    break
+                else:
+                    turn_score += number
+                    print(f'Your turn score is {turn_score}. If you pass, your total score will be {player2_score + turn_score}')
+            elif choice == 'pass':
+                player2_score += turn_score
+                print(f'You end your turn with {player2_score} points.')
+                turn += 1
+                break
 
+print('Game Over')
