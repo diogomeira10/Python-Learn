@@ -75,7 +75,7 @@ while True:
                     print('Bad Luck, 1 was rolled. You lost all your turn score.')
                     turn += 1
                     break
-                else:
+                else: 
                     turn_score += number
                     print(f'Your turn score is {turn_score}. If you pass, your total score will be {player2_score + turn_score}')
             elif choice == 'pass':
