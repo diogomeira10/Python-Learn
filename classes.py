@@ -93,7 +93,7 @@ class Human:
 
 class Warrior(Human): # Inheriting the Human class
     def __init__(self,health,defense):
-        super().__init__(health) # Passing the health argument to the Human parent class
+        super().__init__(health) # Passing the health argument to the Human parent class. Super refers to the class that is inherited, in this case the Human class
         self.defense = defense
 
 
